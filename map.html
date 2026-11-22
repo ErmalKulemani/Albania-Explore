@@ -1,133 +1,180 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Explore the most beautiful cities and destinations of Albania.">
+    <meta name="theme-color" content="#080D17">
 
     <title>Explore Albania | Albania Explorer</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="map.css">
 
-    <link
-        href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css"
-        rel="stylesheet"
-    >
-
-    <script src="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.js"></script>
+    <script src="main.js" defer></script>
 </head>
 
-<body class="map-page">
+<body class="destinations-page">
 
-    <header class="map-header">
-        <a href="index.html" class="map-logo">
-            ALBANIA <span>EXPLORER</span>
+    <!-- HEADER -->
+
+    <header class="destinations-header">
+
+        <a href="index.html" class="destinations-logo">
+            <span>✦</span>
+            ALBANIA EXPLORER
         </a>
 
-        <nav class="map-navigation">
-            <a href="index.html">Home</a>
-            <a href="map.html" class="active">Explore Map</a>
+        <nav class="destinations-nav">
+            <a href="index.html" data-i18n="nav-home">HOME</a>
+            <a href="map.html" class="active" data-i18n="nav-explore">EXPLORE</a>
         </nav>
 
-        <select id="languageSwitcher" aria-label="Language">
-            <option value="en">English</option>
-            <option value="sq">Shqip</option>
-        </select>
+        <div class="destinations-actions">
+
+            <select id="languageSwitcher" aria-label="Select language">
+                <option value="en">🇬🇧 EN</option>
+                <option value="sq">🇦🇱 SQ</option>
+            </select>
+
+        </div>
+
     </header>
 
-    <main class="map-main">
 
-        <section class="map-introduction">
-            <span class="map-eyebrow">DIGITAL ATLAS / ALBANIA</span>
+    <!-- PAGE INTRODUCTION -->
 
-            <h1>EXPLORE <span>ALBANIA</span></h1>
+    <main class="destinations-main">
 
-            <p>
-                Discover the landscapes, cities and hidden destinations
-                of the Land of Eagles.
+        <section class="destinations-intro">
+
+            <span class="destinations-eyebrow" data-i18n="page-eyebrow">
+                DISCOVER ALBANIA
+            </span>
+
+            <h1 data-i18n="page-title">
+                EXPLORE <span>ALBANIA</span>
+            </h1>
+
+            <p data-i18n="page-description">
+                Discover extraordinary cities, breathtaking coastlines
+                and unforgettable places across the Land of Eagles.
             </p>
+
         </section>
 
-        <section class="map-toolbar">
 
-            <div class="map-search">
-                <span>⌕</span>
+        <!-- FEATURED DESTINATIONS -->
 
-                <input
-                    type="search"
-                    id="destinationSearch"
-                    placeholder="Search a destination..."
-                    autocomplete="off"
-                >
+        <section class="destination-section">
 
-                <button id="searchButton" type="button">
-                    SEARCH
-                </button>
+            <div class="destination-section-heading">
+
+                <div>
+                    <span class="section-number">01 / DESTINATIONS</span>
+
+                    <h2 data-i18n="featured-title">
+                        Discover the cities
+                    </h2>
+                </div>
+
+                <span class="destination-count" id="destinationCount">
+                    00 DESTINATIONS
+                </span>
+
             </div>
 
-            <button id="resetMapButton" type="button">
-                RESET VIEW
-            </button>
 
-        </section>
+            <!-- HORIZONTAL DESTINATION CARDS -->
 
-        <section class="map-workspace">
+            <div class="destination-carousel">
 
-            <aside class="map-sidebar">
+                <div class="destination-track" id="destinationList">
 
-                <div class="sidebar-heading">
-                    <span>DESTINATION DATABASE</span>
-                    <h2>Explore Places</h2>
-                </div>
+                    <!-- CARDS WILL BE CREATED BY main.js -->
 
-                <div id="destinationList" class="destination-list"></div>
-
-                <div class="map-legend">
-                    <span class="legend-dot"></span>
-                    <span>Featured destinations</span>
-                </div>
-
-            </aside>
-
-            <div class="map-visual-container">
-
-                <div class="map-top-label">
-                    <span>ALBANIA / 01</span>
-                    <span id="mapCoordinates">40.00° N / 20.00° E</span>
-                </div>
-
-                <div id="albaniaMap"></div>
-
-                <div class="map-status" id="mapStatus">
-                    INITIALIZING MAP...
-                </div>
-
-                <div class="map-bottom-label">
-                    <span>ALBANIA EXPLORER</span>
-                    <span>INTERACTIVE ATLAS</span>
                 </div>
 
             </div>
 
+            <div class="carousel-footer">
+
+                <span data-i18n="carousel-hint">
+                    SCROLL TO DISCOVER MORE
+                </span>
+
+                <div class="carousel-arrows">
+
+                    <button
+                        type="button"
+                        id="previousDestinations"
+                        aria-label="Previous destinations">
+                        ←
+                    </button>
+
+                    <button
+                        type="button"
+                        id="nextDestinations"
+                        aria-label="Next destinations">
+                        →
+                    </button>
+
+                </div>
+
+            </div>
+
         </section>
 
-        <section class="map-information">
-            <span>DISCOVER WITHOUT LIMITS</span>
-            <p>
-                From the Albanian Alps to the Ionian coast,
-                your journey starts here.
-            </p>
+
+        <!-- DISCOVER MORE -->
+
+        <section class="destination-discover">
+
+            <div class="discover-text">
+
+                <span class="section-number">02 / YOUR JOURNEY</span>
+
+                <h2 data-i18n="discover-title">
+                    Every destination has a story.
+                </h2>
+
+                <p data-i18n="discover-description">
+                    From historic towns to beautiful coastal escapes,
+                    find the places that make Albania unforgettable.
+                </p>
+
+            </div>
+
+            <a href="index.html" class="back-home-link">
+                <span data-i18n="back-home">BACK TO HOME</span>
+                <span>↗</span>
+            </a>
+
         </section>
 
     </main>
 
-    <footer class="site-footer">
-        <p>© 2026 ALBANIA EXPLORER — Discover the Land of Eagles</p>
-    </footer>
 
-    <script src="main.js"></script>
-    <script src="map.js"></script>
+    <!-- FOOTER -->
+
+    <footer class="destinations-footer">
+
+        <a href="index.html" class="destinations-logo">
+            ✦ ALBANIA EXPLORER
+        </a>
+
+        <span>
+            © 2026 ALBANIA EXPLORER
+        </span>
+
+        <span data-i18n="footer-tagline">
+            DISCOVER THE LAND OF EAGLES
+        </span>
+
+    </footer>
 
 </body>
 </html>
