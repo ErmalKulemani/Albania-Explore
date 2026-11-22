@@ -1,0 +1,383 @@
+
+/* =========================================
+   ALBANIA EXPLORER
+   DESTINATION PAGES
+========================================= */
+
+.destination-page {
+    background: #070b13;
+    color: #f4f5f8;
+    font-family: "Exo 2", sans-serif;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+
+.destination-page .site-header {
+    position: relative;
+    z-index: 10;
+    background: rgba(5, 9, 17, 0.96);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+}
+
+.destination-page .logo {
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.destination-page .logo span {
+    color: #e63946;
+}
+
+.destination-page nav a {
+    color: #d6dce8;
+    transition: color 0.3s ease;
+}
+
+.destination-page nav a:hover {
+    color: #e63946;
+}
+
+/* HERO */
+
+.destination-hero {
+    position: relative;
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 100px 9%;
+    background:
+        linear-gradient(90deg, rgba(4, 8, 16, 0.95), rgba(4, 8, 16, 0.35)),
+        linear-gradient(0deg, #070b13 0%, transparent 45%),
+        url("assets/images/Sarande Albania.jpg") center 45% / cover no-repeat;
+}
+
+.destination-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 75% 45%,
+        rgba(230, 57, 70, 0.12),
+        transparent 55%
+    );
+    pointer-events: none;
+}
+
+.destination-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        0deg,
+        #070b13 0%,
+        transparent 30%,
+        transparent 75%,
+        rgba(7, 11, 19, 0.3)
+    );
+}
+
+.destination-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+}
+
+.destination-label {
+    display: inline-block;
+    color: #e63946;
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    margin-bottom: 22px;
+}
+
+.destination-hero h1 {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(38px, 7vw, 82px);
+    line-height: 1.12;
+    margin: 0 0 22px;
+    text-transform: uppercase;
+    text-shadow: 0 0 35px rgba(0, 0, 0, 0.5);
+}
+
+.destination-hero-content > p {
+    max-width: 650px;
+    color: #d0d6e2;
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.destination-back-button {
+    display: inline-block;
+    padding: 14px 25px;
+    color: #ffffff;
+    background: rgba(230, 57, 70, 0.12);
+    border: 1px solid #e63946;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.destination-back-button:hover {
+    background: #e63946;
+    box-shadow: 0 0 25px rgba(230, 57, 70, 0.35);
+    transform: translateY(-3px);
+}
+
+/* GENERAL SECTIONS */
+
+.destination-overview,
+.destination-attractions,
+.destination-gallery {
+    padding: 90px 9%;
+}
+
+.destination-section-heading {
+    margin-bottom: 35px;
+}
+
+.destination-section-heading > span {
+    color: #e63946;
+    font-family: "Orbitron", sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.destination-section-heading h2 {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(27px, 4vw, 40px);
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+/* OVERVIEW */
+
+.destination-overview {
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(31, 91, 155, 0.12),
+            transparent 35%
+        ),
+        #070b13;
+}
+
+#destinationDescription {
+    max-width: 950px;
+    color: #aeb8c9;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.destination-facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 45px;
+}
+
+.destination-fact {
+    padding: 28px;
+    background: linear-gradient(
+        145deg,
+        rgba(20, 31, 49, 0.95),
+        rgba(10, 16, 27, 0.95)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 2px solid #e63946;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.destination-fact:hover {
+    transform: translateY(-5px);
+    border-color: rgba(230, 57, 70, 0.6);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+.destination-fact span {
+    display: block;
+    color: #e63946;
+    font-family: "Orbitron", sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 13px;
+}
+
+.destination-fact strong {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+/* ATTRACTIONS */
+
+.destination-attractions {
+    background: #0b111d;
+}
+
+.attractions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.attraction-card {
+    overflow: hidden;
+    background: #111b2b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 9px;
+    transition: 0.35s ease;
+}
+
+.attraction-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(230, 57, 70, 0.55);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.attraction-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.attraction-card:hover img {
+    transform: scale(1.05);
+}
+
+.attraction-card-content {
+    padding: 22px;
+}
+
+.attraction-card h3 {
+    color: #ffffff;
+    font-family: "Orbitron", sans-serif;
+    font-size: 17px;
+    margin: 0 0 12px;
+}
+
+.attraction-card p {
+    color: #aeb8c9;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* GALLERY */
+
+.destination-gallery {
+    background: #070b13;
+}
+
+.destination-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.destination-gallery-grid img {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.35s ease;
+}
+
+.destination-gallery-grid img:hover {
+    transform: scale(1.025);
+    border-color: #e63946;
+    box-shadow: 0 0 25px rgba(230, 57, 70, 0.2);
+}
+
+/* EXPLORE MORE */
+
+.destination-explore-more {
+    padding: 90px 20px;
+    text-align: center;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(116, 25, 37, 0.2),
+            transparent 65%
+        ),
+        #0b111d;
+}
+
+.destination-explore-more h2 {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(25px, 4vw, 38px);
+    margin-bottom: 15px;
+}
+
+.destination-explore-more p {
+    color: #aeb8c9;
+    margin-bottom: 30px;
+}
+
+/* FOOTER */
+
+.destination-page .site-footer {
+    padding: 25px;
+    text-align: center;
+    background: #050810;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    color: #8993a5;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .destination-hero {
+        min-height: 560px;
+        padding: 80px 6%;
+    }
+
+    .destination-overview,
+    .destination-attractions,
+    .destination-gallery {
+        padding: 65px 6%;
+    }
+
+    .attractions-grid,
+    .destination-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .destination-hero {
+        min-height: 500px;
+        padding: 70px 6%;
+    }
+
+    .destination-hero-content > p {
+        font-size: 16px;
+    }
+
+    .destination-facts,
+    .attractions-grid,
+    .destination-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-gallery-grid img {
+        height: 230px;
+    }
+
+    .destination-overview,
+    .destination-attractions,
+    .destination-gallery {
+        padding: 55px 6%;
+    }
+}
