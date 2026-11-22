@@ -1,539 +1,400 @@
 
 /* =========================================
    ALBANIA EXPLORER
-   MAPLIBRE INTERACTIVE MAP
+   DESTINATION CARDS SYSTEM
 ========================================= */
 
 const destinations = [
     {
         name: "Tirana",
         slug: "tirana",
-        coordinates: [19.8187, 41.3275],
-        region: "Central Albania"
+        region: { en: "Central Albania", sq: "Shqipëria e Mesme" },
+        subtitle: {
+            en: "Discover the vibrant capital of Albania.",
+            sq: "Zbuloni kryeqytetin plot gjallëri të Shqipërisë."
+        },
+        category: { en: "CAPITAL CITY", sq: "KRYEQYTET" },
+        image: "assets/images/Tirana Albania.jpg"
     },
     {
         name: "Shkodër",
         slug: "shkoder",
-        coordinates: [19.5033, 42.0683],
-        region: "Northern Albania"
+        region: { en: "Northern Albania", sq: "Shqipëria e Veriut" },
+        subtitle: {
+            en: "Explore one of Albania's oldest historic cities.",
+            sq: "Zbuloni një nga qytetet historike më të vjetra të Shqipërisë."
+        },
+        category: { en: "HISTORY & CULTURE", sq: "HISTORI DHE KULTURË" },
+        image: "assets/images/Shkoder Albania.jpg"
     },
     {
         name: "Durrës",
         slug: "durres",
-        coordinates: [19.4547, 41.3246],
-        region: "Western Albania"
+        region: { en: "Western Albania", sq: "Shqipëria Perëndimore" },
+        subtitle: {
+            en: "Discover ancient history and Adriatic beaches.",
+            sq: "Zbuloni historinë antike dhe plazhet e Adriatikut."
+        },
+        category: { en: "COASTAL CITY", sq: "QYTET BREGDETAR" },
+        image: "assets/images/Durres Albania.jpg"
     },
     {
         name: "Berat",
         slug: "berat",
-        coordinates: [19.9522, 40.7058],
-        region: "Southern Albania"
+        region: { en: "Southern Albania", sq: "Shqipëria e Jugut" },
+        subtitle: {
+            en: "Discover the city of a thousand windows.",
+            sq: "Zbuloni qytetin e një mijë dritareve."
+        },
+        category: { en: "UNESCO HERITAGE", sq: "TRASHËGIMI UNESCO" },
+        image: "assets/images/Berat Albania.jpg"
     },
     {
         name: "Gjirokastër",
         slug: "gjirokaster",
-        coordinates: [20.1389, 40.0758],
-        region: "Southern Albania"
+        region: { en: "Southern Albania", sq: "Shqipëria e Jugut" },
+        subtitle: {
+            en: "Explore the famous stone city.",
+            sq: "Eksploroni qytetin e famshëm të gurtë."
+        },
+        category: { en: "HISTORIC CITY", sq: "QYTET HISTORIK" },
+        image: "assets/images/Gjirokaster Albania.jpg"
     },
     {
         name: "Vlorë",
         slug: "vlore",
-        coordinates: [19.4897, 40.4661],
-        region: "Southern Albania"
+        region: { en: "Southern Albania", sq: "Shqipëria e Jugut" },
+        subtitle: {
+            en: "Where the Adriatic meets the Ionian Sea.",
+            sq: "Ku Adriatiku takohet me detin Jon."
+        },
+        category: { en: "COASTAL CITY", sq: "QYTET BREGDETAR" },
+        image: "assets/images/Vlore Albania.jpg"
     },
     {
         name: "Sarandë",
         slug: "sarande",
-        coordinates: [20.0053, 39.8756],
-        region: "Southern Albania"
+        region: { en: "Southern Albania", sq: "Shqipëria e Jugut" },
+        subtitle: {
+            en: "Enjoy the beauty of the Ionian coastline.",
+            sq: "Shijoni bukurinë e bregdetit Jon."
+        },
+        category: { en: "IONIAN COAST", sq: "BREGDETI JON" },
+        image: "assets/images/Sarande Albania.jpg"
     },
     {
         name: "Ksamil",
         slug: "ksamil",
-        coordinates: [20.0053, 39.7681],
-        region: "Southern Albania"
+        region: { en: "Southern Albania", sq: "Shqipëria e Jugut" },
+        subtitle: {
+            en: "Discover turquoise waters and beautiful beaches.",
+            sq: "Zbuloni ujërat bruz dhe plazhet e bukura."
+        },
+        category: { en: "BEACH DESTINATION", sq: "DESTINACION PLAZHI" },
+        image: "assets/images/Ksamil Albania.jpg"
     },
     {
         name: "Krujë",
         slug: "kruje",
-        coordinates: [19.7928, 41.5095],
-        region: "Central Albania"
+        region: { en: "Central Albania", sq: "Shqipëria e Mesme" },
+        subtitle: {
+            en: "Discover the home of Albanian history and heritage.",
+            sq: "Zbuloni vendin e historisë dhe trashëgimisë shqiptare."
+        },
+        category: { en: "HISTORY & HERITAGE", sq: "HISTORI DHE TRASHËGIMI" },
+        image: "assets/images/Kruje Albania.jpg"
     },
     {
         name: "Theth",
         slug: "theth",
-        coordinates: [19.7681, 42.3953],
-        region: "Northern Albania"
+        region: { en: "Northern Albania", sq: "Shqipëria e Veriut" },
+        subtitle: {
+            en: "Experience the beauty of the Albanian Alps.",
+            sq: "Përjetoni bukurinë e Alpeve Shqiptare."
+        },
+        category: { en: "MOUNTAIN ESCAPE", sq: "ARRATISJE NË MALE" },
+        image: "assets/images/Theth Albania.jpg"
     },
     {
         name: "Valbonë",
         slug: "valbone",
-        coordinates: [19.8917, 42.4519],
-        region: "Northern Albania"
+        region: { en: "Northern Albania", sq: "Shqipëria e Veriut" },
+        subtitle: {
+            en: "Explore spectacular mountain landscapes.",
+            sq: "Eksploroni peizazhe malore mahnitëse."
+        },
+        category: { en: "NATURAL LANDSCAPE", sq: "PEIZAZH NATYROR" },
+        image: "assets/images/Valbone Albania.jpg"
     },
     {
         name: "Butrint",
         slug: "butrint",
-        coordinates: [20.0261, 39.7453],
-        region: "Southern Albania"
+        region: { en: "Southern Albania", sq: "Shqipëria e Jugut" },
+        subtitle: {
+            en: "Travel through centuries of ancient history.",
+            sq: "Udhëtoni nëpër shekuj të historisë antike."
+        },
+        category: { en: "ARCHAEOLOGICAL SITE", sq: "SIT ARKEOLOGJIK" },
+        image: "assets/images/Butrint Albania.jpg"
     }
 ];
 
+
 /* =========================================
-   CONFIGURATION
+   TRANSLATIONS
 ========================================= */
 
-const albaniaCenter = [20.0, 41.15];
-
-let albaniaMap = null;
-let mapMarkers = [];
-let selectedDestination = null;
-
-let currentLanguage =
-    localStorage.getItem("albaniaLanguage") || "en";
-
-const translations = {
+const pageTranslations = {
     en: {
-        search: "Search a destination...",
-        searchButton: "SEARCH",
-        reset: "RESET VIEW",
-        heading: "Explore Places",
-        database: "DESTINATION DATABASE",
-        legend: "Featured destinations",
-        status: "MAP ONLINE",
-        region: "REGION",
-        explore: "DISCOVER DESTINATION",
-        noResults: "No destinations found.",
-        mapError: "MAP COULD NOT BE LOADED"
+        home: "HOME",
+        explore: "EXPLORE",
+        eyebrow: "DISCOVER ALBANIA",
+        title: "EXPLORE",
+        titleAccent: "ALBANIA",
+        description: "Discover extraordinary cities, breathtaking coastlines and unforgettable places across the Land of Eagles.",
+        sectionNumber: "01 / DESTINATIONS",
+        featuredTitle: "Discover the cities",
+        count: "DESTINATIONS",
+        carouselHint: "SCROLL TO DISCOVER MORE",
+        discoverNumber: "02 / YOUR JOURNEY",
+        discoverTitle: "Every destination has a story.",
+        discoverDescription: "From historic towns to beautiful coastal escapes, find the places that make Albania unforgettable.",
+        backHome: "BACK TO HOME",
+        footerTagline: "DISCOVER THE LAND OF EAGLES",
+        openDestination: "DISCOVER"
     },
 
     sq: {
-        search: "Kërkoni një destinacion...",
-        searchButton: "KËRKO",
-        reset: "RIVENDOS PAMJEN",
-        heading: "Eksploroni Vendet",
-        database: "BAZA E DESTINACIONEVE",
-        legend: "Destinacione kryesore",
-        status: "HARTA AKTIVE",
-        region: "RAJONI",
-        explore: "ZBULONI DESTINACIONIN",
-        noResults: "Nuk u gjet asnjë destinacion.",
-        mapError: "HARTA NUK MUND TË NGARKOHET"
+        home: "KRYEFAQJA",
+        explore: "EKSPLORO",
+        eyebrow: "ZBULONI SHQIPËRINË",
+        title: "EKSPLORONI",
+        titleAccent: "SHQIPËRINË",
+        description: "Zbuloni qytete të jashtëzakonshme, brigje mahnitëse dhe vende të paharrueshme në Vendin e Shqiponjave.",
+        sectionNumber: "01 / DESTINACIONET",
+        featuredTitle: "Zbuloni qytetet",
+        count: "DESTINACIONE",
+        carouselHint: "LËVIZNI PËR TË ZBULUAR MË SHUMË",
+        discoverNumber: "02 / UDHËTIMI JUAJ",
+        discoverTitle: "Çdo destinacion ka një histori.",
+        discoverDescription: "Nga qytetet historike te brigjet e bukura, zbuloni vendet që e bëjnë Shqipërinë të paharrueshme.",
+        backHome: "KTHEHU NË KRYEFAQE",
+        footerTagline: "ZBULONI VENDIN E SHQIPONJAVE",
+        openDestination: "ZBULONI"
     }
 };
 
-/* =========================================
-   MAP STATUS
-========================================= */
-
-function updateMapStatus(message) {
-    const status = document.getElementById("mapStatus");
-
-    if (status) {
-        status.textContent = message;
-    }
-}
-
-/* =========================================
-   CUSTOM MARKER
-========================================= */
-
-function createDestinationMarker(destination) {
-    const markerElement = document.createElement("button");
-
-    markerElement.className = "custom-map-marker";
-    markerElement.type = "button";
-    markerElement.setAttribute(
-        "aria-label",
-        destination.name
-    );
-
-    markerElement.innerHTML = `
-        <span class="marker-pulse"></span>
-        <span class="marker-core"></span>
-    `;
-
-    const marker = new maplibregl.Marker({
-        element: markerElement,
-        anchor: "center"
-    })
-        .setLngLat(destination.coordinates)
-        .addTo(albaniaMap);
-
-    markerElement.addEventListener("click", () => {
-        selectDestination(destination);
-    });
-
-    return marker;
-}
-
-/* =========================================
-   DESTINATION POPUP
-========================================= */
-
-function showDestinationPopup(destination) {
-    const content = document.createElement("div");
-    content.className = "destination-popup-content";
-
-    const title = document.createElement("h3");
-    title.textContent = destination.name;
-
-    const region = document.createElement("p");
-    region.textContent =
-        translations[currentLanguage].region +
-        ": " + destination.region;
-
-    const link = document.createElement("a");
-    link.href = "destination.html?place=" + destination.slug;
-    link.textContent =
-        translations[currentLanguage].explore;
-
-    content.appendChild(title);
-    content.appendChild(region);
-    content.appendChild(link);
-
-    new maplibregl.Popup({
-        closeButton: true,
-        closeOnClick: false,
-        offset: 22,
-        className: "albania-map-popup"
-    })
-        .setLngLat(destination.coordinates)
-        .setDOMContent(content)
-        .addTo(albaniaMap);
-}
-
-/* =========================================
-   SELECT DESTINATION
-========================================= */
-
-function selectDestination(destination) {
-    selectedDestination = destination;
-
-    albaniaMap.flyTo({
-        center: destination.coordinates,
-        zoom: 11,
-        speed: 0.8,
-        curve: 1.4,
-        essential: true
-    });
-
-    document.querySelectorAll(".destination-item")
-        .forEach(button => {
-            button.classList.toggle(
-                "active",
-                button.dataset.slug === destination.slug
-            );
-        });
-
-    showDestinationPopup(destination);
-}
-
-/* =========================================
-   DESTINATION LIST
-========================================= */
-
-function createDestinationList(filter = "") {
-    const container =
-        document.getElementById("destinationList");
-
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    const searchTerm = filter.toLowerCase();
-
-    const filteredDestinations = destinations.filter(
-        destination =>
-            destination.name.toLowerCase().includes(searchTerm) ||
-            destination.region.toLowerCase().includes(searchTerm)
-    );
-
-    if (filteredDestinations.length === 0) {
-        const emptyMessage = document.createElement("p");
-        emptyMessage.textContent =
-            translations[currentLanguage].noResults;
-
-        container.appendChild(emptyMessage);
-        return;
-    }
-
-    filteredDestinations.forEach(destination => {
-        const button = document.createElement("button");
-
-        button.type = "button";
-        button.className = "destination-item";
-        button.textContent = destination.name;
-        button.dataset.slug = destination.slug;
-
-        if (
-            selectedDestination &&
-            selectedDestination.slug === destination.slug
-        ) {
-            button.classList.add("active");
-        }
-
-        button.addEventListener("click", () => {
-            selectDestination(destination);
-        });
-
-        container.appendChild(button);
-    });
-}
-
-/* =========================================
-   SEARCH
-========================================= */
-
-function initializeSearch() {
-    const input =
-        document.getElementById("destinationSearch");
-
-    const button =
-        document.getElementById("searchButton");
-
-    if (!input || !button) return;
-
-    function searchDestination() {
-        const query = input.value.trim().toLowerCase();
-
-        createDestinationList(query);
-
-        const match = destinations.find(destination =>
-            destination.name.toLowerCase() === query ||
-            destination.slug.toLowerCase() === query
-        );
-
-        if (match) {
-            selectDestination(match);
-        }
-    }
-
-    button.addEventListener("click", searchDestination);
-
-    input.addEventListener("keydown", event => {
-        if (event.key === "Enter") {
-            searchDestination();
-        }
-    });
-
-    input.addEventListener("input", () => {
-        createDestinationList(input.value.trim());
-    });
-}
-
-/* =========================================
-   RESET MAP
-========================================= */
-
-function initializeResetButton() {
-    const button =
-        document.getElementById("resetMapButton");
-
-    if (!button) return;
-
-    button.addEventListener("click", () => {
-        selectedDestination = null;
-
-        albaniaMap.flyTo({
-            center: albaniaCenter,
-            zoom: 7,
-            speed: 0.8,
-            essential: true
-        });
-
-        document.querySelectorAll(".destination-item")
-            .forEach(item => item.classList.remove("active"));
-
-        const input =
-            document.getElementById("destinationSearch");
-
-        if (input) input.value = "";
-
-        createDestinationList();
-    });
-}
-
-/* =========================================
-   MAP COORDINATES
-========================================= */
-
-function initializeCoordinates() {
-    const coordinateDisplay =
-        document.getElementById("mapCoordinates");
-
-    if (!coordinateDisplay) return;
-
-    function updateCoordinates() {
-        const center = albaniaMap.getCenter();
-
-        coordinateDisplay.textContent =
-            Math.abs(center.lat).toFixed(2) + "° N / " +
-            Math.abs(center.lng).toFixed(2) + "° E";
-    }
-
-    albaniaMap.on("move", updateCoordinates);
-    updateCoordinates();
-}
 
 /* =========================================
    LANGUAGE
 ========================================= */
 
-function initializeMapLanguage() {
-    const switcher =
-        document.getElementById("languageSwitcher");
+let currentLanguage =
+    localStorage.getItem("albaniaLanguage") || "en";
+
+if (!pageTranslations[currentLanguage]) {
+    currentLanguage = "en";
+}
+
+
+/* =========================================
+   CREATE DESTINATION CARDS
+========================================= */
+
+function createDestinationCards() {
+    const container = document.getElementById("destinationList");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    destinations.forEach((destination, index) => {
+        const card = document.createElement("a");
+
+        card.className = "destination-card";
+        card.href = `destination.html?place=${destination.slug}`;
+
+        const image = document.createElement("img");
+        image.className = "destination-image";
+        image.src = destination.image;
+        image.alt = `${destination.name}, Albania`;
+        image.loading = index < 4 ? "eager" : "lazy";
+
+        image.addEventListener("error", () => {
+            image.style.display = "none";
+        });
+
+        const overlay = document.createElement("div");
+        overlay.className = "destination-overlay";
+
+        const label = document.createElement("span");
+        label.className = "destination-date";
+        label.textContent = destination.category[currentLanguage];
+
+        const arrow = document.createElement("span");
+        arrow.className = "destination-arrow";
+        arrow.textContent = "↗";
+
+        const content = document.createElement("div");
+        content.className = "destination-content";
+
+        const category = document.createElement("span");
+        category.className = "destination-category";
+        category.textContent = destination.region[currentLanguage];
+
+        const name = document.createElement("h3");
+        name.className = "destination-name";
+        name.textContent = destination.name;
+
+        const subtitle = document.createElement("p");
+        subtitle.className = "destination-subtitle";
+        subtitle.textContent = destination.subtitle[currentLanguage];
+
+        const region = document.createElement("span");
+        region.className = "destination-region";
+        region.textContent = pageTranslations[currentLanguage].openDestination + " →";
+
+        content.appendChild(category);
+        content.appendChild(name);
+        content.appendChild(subtitle);
+        content.appendChild(region);
+
+        card.appendChild(image);
+        card.appendChild(overlay);
+        card.appendChild(label);
+        card.appendChild(arrow);
+        card.appendChild(content);
+
+        container.appendChild(card);
+    });
+
+    updateDestinationCount();
+}
+
+
+/* =========================================
+   DESTINATION COUNT
+========================================= */
+
+function updateDestinationCount() {
+    const count = document.getElementById("destinationCount");
+
+    if (!count) return;
+
+    count.textContent =
+        `${String(destinations.length).padStart(2, "0")} ${pageTranslations[currentLanguage].count}`;
+}
+
+
+/* =========================================
+   TRANSLATE PAGE
+========================================= */
+
+function translateDestinationsPage() {
+    const text = pageTranslations[currentLanguage];
+
+    document.documentElement.lang = currentLanguage;
+
+    const translations = {
+        ".destinations-nav a:first-child": text.home,
+        ".destinations-nav a:last-child": text.explore,
+        ".destinations-eyebrow": text.eyebrow,
+        ".destinations-intro p": text.description,
+        ".section-number": text.sectionNumber,
+        ".destination-section-heading h2": text.featuredTitle,
+        ".carousel-footer > span": text.carouselHint,
+        ".destination-discover .section-number": text.discoverNumber,
+        ".destination-discover h2": text.discoverTitle,
+        ".destination-discover p": text.discoverDescription,
+        ".back-home-link span:first-child": text.backHome,
+        ".destinations-footer > span:last-child": text.footerTagline
+    };
+
+    Object.entries(translations).forEach(([selector, value]) => {
+        const element = document.querySelector(selector);
+
+        if (element) {
+            element.textContent = value;
+        }
+    });
+
+    const title = document.querySelector(".destinations-intro h1");
+
+    if (title) {
+        title.innerHTML = `${text.title} <span>${text.titleAccent}</span>`;
+    }
+
+    const sectionLabel = document.querySelector(".destination-section-heading .section-number");
+
+    if (sectionLabel) {
+        sectionLabel.textContent = text.sectionNumber;
+    }
+
+    const discoverLabel = document.querySelector(".destination-discover .section-number");
+
+    if (discoverLabel) {
+        discoverLabel.textContent = text.discoverNumber;
+    }
+
+    createDestinationCards();
+}
+
+
+/* =========================================
+   LANGUAGE SWITCHER
+========================================= */
+
+function initializeLanguageSwitcher() {
+    const switcher = document.getElementById("languageSwitcher");
 
     if (!switcher) return;
 
     switcher.value = currentLanguage;
 
-    switcher.addEventListener("change", function () {
-        currentLanguage = this.value;
+    switcher.addEventListener("change", () => {
+        currentLanguage = switcher.value;
 
-        localStorage.setItem(
-            "albaniaLanguage",
-            currentLanguage
-        );
+        localStorage.setItem("albaniaLanguage", currentLanguage);
 
-        const text = translations[currentLanguage];
-
-        document.querySelector(".map-search input").placeholder =
-            text.search;
-
-        document.getElementById("searchButton").textContent =
-            text.searchButton;
-
-        document.getElementById("resetMapButton").textContent =
-            text.reset;
-
-        document.querySelector(".sidebar-heading h2").textContent =
-            text.heading;
-
-        document.querySelector(".sidebar-heading span").textContent =
-            text.database;
-
-        document.querySelector(".map-legend span:last-child").textContent =
-            text.legend;
-
-        createDestinationList(
-            document.getElementById("destinationSearch").value
-        );
-
-        if (selectedDestination) {
-            showDestinationPopup(selectedDestination);
-        }
-
-        updateMapStatus(text.status);
+        translateDestinationsPage();
     });
 }
 
+
 /* =========================================
-   INITIALIZE MAP
+   CAROUSEL CONTROLS
 ========================================= */
 
-function initializeMap() {
-    const mapElement =
-        document.getElementById("albaniaMap");
+function initializeCarousel() {
+    const track = document.getElementById("destinationList");
 
-    if (!mapElement || typeof maplibregl === "undefined") {
-        updateMapStatus(
-            translations[currentLanguage].mapError
-        );
+    const previousButton = document.getElementById("previousDestinations");
+    const nextButton = document.getElementById("nextDestinations");
 
-        console.error("MapLibre or map container not found.");
-        return;
-    }
+    if (!track || !previousButton || !nextButton) return;
 
-    try {
-        albaniaMap = new maplibregl.Map({
-            container: "albaniaMap",
-
-            style: {
-                version: 8,
-
-                sources: {
-                    "carto-dark": {
-                        type: "raster",
-                        tiles: [
-                            "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-                            "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-                            "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-                            "https://d.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
-                        ],
-                        tileSize: 256,
-                        attribution:
-                            '&copy; OpenStreetMap contributors &copy; CARTO'
-                    }
-                },
-
-                layers: [
-                    {
-                        id: "carto-dark-layer",
-                        type: "raster",
-                        source: "carto-dark",
-                        minzoom: 0,
-                        maxzoom: 19
-                    }
-                ]
-            },
-
-            center: albaniaCenter,
-            zoom: 7,
-            minZoom: 5,
-            maxZoom: 17,
-
-            maxBounds: [
-                [18.0, 39.0],
-                [22.0, 43.0]
-            ],
-
-            attributionControl: true
+    previousButton.addEventListener("click", () => {
+        track.parentElement.scrollBy({
+            left: -550,
+            behavior: "smooth"
         });
+    });
 
-        albaniaMap.addControl(
-            new maplibregl.NavigationControl({
-                showCompass: true,
-                showZoom: true
-            }),
-            "top-right"
-        );
-
-        albaniaMap.on("load", () => {
-            destinations.forEach(destination => {
-                mapMarkers.push(
-                    createDestinationMarker(destination)
-                );
-            });
-
-            createDestinationList();
-            initializeSearch();
-            initializeResetButton();
-            initializeCoordinates();
-
-            updateMapStatus(
-                translations[currentLanguage].status
-            );
+    nextButton.addEventListener("click", () => {
+        track.parentElement.scrollBy({
+            left: 550,
+            behavior: "smooth"
         });
-
-        albaniaMap.on("error", event => {
-            console.error("MapLibre error:", event.error);
-        });
-
-    } catch (error) {
-        console.error("Map initialization error:", error);
-
-        updateMapStatus(
-            translations[currentLanguage].mapError
-        );
-    }
+    });
 }
 
+
 /* =========================================
-   START
+   INITIALIZE PAGE
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-    initializeMap();
-    initializeMapLanguage();
+    initializeLanguageSwitcher();
+    translateDestinationsPage();
+    initializeCarousel();
 });
