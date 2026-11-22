@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explore Albania | Albania Explorer</title>
+
+    <meta name="description" content="Explore Albania through an interactive map. Discover cities, beaches, mountains and historic destinations.">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="map.css">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body class="map-page">
+
+    <header class="header map-header">
+
+        <a href="index.html" class="logo">
+            ALBANIA <span>EXPLORER</span>
+        </a>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="#map">Explore Map</a>
+            <a href="#destinations">Destinations</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <select id="languageSwitcher" aria-label="Select language">
+                <option value="en">🇬🇧 EN</option>
+                <option value="sq">🇦🇱 SQ</option>
+            </select>
+
+            <a href="index.html" class="header-explore">
+                BACK HOME
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="map-intro">
+
+            <div class="section-label">DISCOVER ALBANIA</div>
+
+            <h1>Explore the Land of Eagles</h1>
+
+            <p>
+                Discover Albania's cities, spectacular coastlines,
+                mountains and historical treasures.
+            </p>
+
+        </section>
+
+
+        <section class="interactive-map-section" id="map">
+
+            <div class="map-toolbar">
+
+                <div class="map-search">
+
+                    <input
+                        type="search"
+                        id="destinationSearch"
+                        placeholder="Search a city or destination..."
+                        autocomplete="off"
+                    >
+
+                    <button id="searchButton" type="button">
+                        SEARCH
+                    </button>
+
+                </div>
+
+                <button id="resetMapButton" type="button">
+                    SHOW ALL ALBANIA
+                </button>
+
+            </div>
+
+
+            <div class="map-layout">
+
+                <aside class="map-sidebar">
+
+                    <div class="sidebar-heading">
+                        <span class="section-label">DESTINATIONS</span>
+                        <h2>Discover Albania</h2>
+                    </div>
+
+                    <div class="destination-list" id="destinationList">
+
+                        <p class="map-loading">
+                            Destinations will appear here.
+                        </p>
+
+                    </div>
+
+                    <div class="map-legend">
+
+                        <h3>MAP LEGEND</h3>
+
+                        <div class="legend-item">
+                            <span class="legend-marker city-marker"></span>
+                            <span>Cities</span>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-marker beach-marker"></span>
+                            <span>Beaches</span>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-marker nature-marker"></span>
+                            <span>Nature</span>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-marker history-marker"></span>
+                            <span>Historical sites</span>
+                        </div>
+
+                    </div>
+
+                </aside>
+
+
+                <div class="map-container">
+
+                    <div
+                        id="albaniaMap"
+                        role="application"
+                        aria-label="Interactive map of Albania"
+                    ></div>
+
+                    <div class="map-status" id="mapStatus">
+                        Loading map...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="map-destinations" id="destinations">
+
+            <div class="section-label">START YOUR JOURNEY</div>
+
+            <h2>Discover Every Corner of Albania</h2>
+
+            <p>
+                From the Adriatic and Ionian coast to the Albanian Alps,
+                explore the destinations that make this country unique.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <a href="index.html" class="logo">
+            ALBANIA <span>EXPLORER</span>
+        </a>
+
+        <p>Discover the Land of Eagles</p>
+
+    </footer>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="main.js"></script>
+    <script src="map.js"></script>
+
+</body>
+</html>
