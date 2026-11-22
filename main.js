@@ -1,306 +1,539 @@
 
 /* =========================================
    ALBANIA EXPLORER
-   MAIN JAVASCRIPT
+   MAPLIBRE INTERACTIVE MAP
 ========================================= */
 
+const destinations = [
+    {
+        name: "Tirana",
+        slug: "tirana",
+        coordinates: [19.8187, 41.3275],
+        region: "Central Albania"
+    },
+    {
+        name: "Shkodër",
+        slug: "shkoder",
+        coordinates: [19.5033, 42.0683],
+        region: "Northern Albania"
+    },
+    {
+        name: "Durrës",
+        slug: "durres",
+        coordinates: [19.4547, 41.3246],
+        region: "Western Albania"
+    },
+    {
+        name: "Berat",
+        slug: "berat",
+        coordinates: [19.9522, 40.7058],
+        region: "Southern Albania"
+    },
+    {
+        name: "Gjirokastër",
+        slug: "gjirokaster",
+        coordinates: [20.1389, 40.0758],
+        region: "Southern Albania"
+    },
+    {
+        name: "Vlorë",
+        slug: "vlore",
+        coordinates: [19.4897, 40.4661],
+        region: "Southern Albania"
+    },
+    {
+        name: "Sarandë",
+        slug: "sarande",
+        coordinates: [20.0053, 39.8756],
+        region: "Southern Albania"
+    },
+    {
+        name: "Ksamil",
+        slug: "ksamil",
+        coordinates: [20.0053, 39.7681],
+        region: "Southern Albania"
+    },
+    {
+        name: "Krujë",
+        slug: "kruje",
+        coordinates: [19.7928, 41.5095],
+        region: "Central Albania"
+    },
+    {
+        name: "Theth",
+        slug: "theth",
+        coordinates: [19.7681, 42.3953],
+        region: "Northern Albania"
+    },
+    {
+        name: "Valbonë",
+        slug: "valbone",
+        coordinates: [19.8917, 42.4519],
+        region: "Northern Albania"
+    },
+    {
+        name: "Butrint",
+        slug: "butrint",
+        coordinates: [20.0261, 39.7453],
+        region: "Southern Albania"
+    }
+];
 
 /* =========================================
-   1. LANGUAGE SYSTEM
+   CONFIGURATION
 ========================================= */
+
+const albaniaCenter = [20.0, 41.15];
+
+let albaniaMap = null;
+let mapMarkers = [];
+let selectedDestination = null;
+
+let currentLanguage =
+    localStorage.getItem("albaniaLanguage") || "en";
 
 const translations = {
-
     en: {
-
-        "nav-home": "Home",
-        "nav-discover": "Discover",
-        "nav-experiences": "Experiences",
-        "nav-about": "About Albania",
-
-        "hero-label": "WELCOME TO ALBANIA",
-        "hero-subtitle": "Discover the Land of Eagles",
-
-        "hero-description":
-            "A land of breathtaking landscapes, crystal-clear waters, ancient history and unforgettable experiences. Discover the beauty of Albania.",
-
-        "explore-button": "EXPLORE",
-        "scroll": "SCROLL TO DISCOVER",
-
-        "intro-title":
-            "A Small Country. An Extraordinary World.",
-
-        "intro-description":
-            "Located in southeastern Europe, Albania is a country of remarkable contrasts. From the turquoise waters of the Adriatic and Ionian seas to the majestic Albanian Alps, every corner tells a different story. Its rich history, welcoming traditions, historic cities and spectacular landscapes make Albania a destination waiting to be discovered.",
-
-        "experiences-title":
-            "Discover Every Side of Albania",
-
-        "experiences-description":
-            "From the coast to the mountains, from ancient cities to local traditions. There is always something new to discover.",
-
-        "explore-title":
-            "Ready to Explore Albania?",
-
-        "explore-description":
-            "Discover the cities, explore the map, find extraordinary destinations and plan your journey across Albania."
-
+        search: "Search a destination...",
+        searchButton: "SEARCH",
+        reset: "RESET VIEW",
+        heading: "Explore Places",
+        database: "DESTINATION DATABASE",
+        legend: "Featured destinations",
+        status: "MAP ONLINE",
+        region: "REGION",
+        explore: "DISCOVER DESTINATION",
+        noResults: "No destinations found.",
+        mapError: "MAP COULD NOT BE LOADED"
     },
 
-
     sq: {
-
-        "nav-home": "Kryefaqja",
-        "nav-discover": "Zbulo",
-        "nav-experiences": "Përvoja",
-        "nav-about": "Rreth Shqipërisë",
-
-        "hero-label": "MIRË SE VINI NË SHQIPËRI",
-        "hero-subtitle": "Zbulo Vendin e Shqiponjave",
-
-        "hero-description":
-            "Një vend me peizazhe mahnitëse, ujëra të kristalta, histori të lashtë dhe përvoja të paharrueshme. Zbulo bukurinë e Shqipërisë.",
-
-        "explore-button": "EKSPLORO",
-        "scroll": "ZBRIT PËR TË ZBULUAR",
-
-        "intro-title":
-            "Një vend i vogël. Një botë e jashtëzakonshme.",
-
-        "intro-description":
-            "E vendosur në Evropën Juglindore, Shqipëria është një vend me kontraste të jashtëzakonshme. Nga ujërat bruz të deteve Adriatik dhe Jon deri te Alpet madhështore Shqiptare, çdo cep tregon një histori të ndryshme. Historia e pasur, traditat mikpritëse, qytetet historike dhe peizazhet spektakolare e bëjnë Shqipërinë një destinacion që meriton të zbulohet.",
-
-        "experiences-title":
-            "Zbulo çdo anë të Shqipërisë",
-
-        "experiences-description":
-            "Nga bregdeti te malet, nga qytetet e lashta te traditat lokale. Gjithmonë ka diçka të re për të zbuluar.",
-
-        "explore-title":
-            "Gati për të eksploruar Shqipërinë?",
-
-        "explore-description":
-            "Zbulo qytetet, eksploro hartën, gjej destinacione të jashtëzakonshme dhe planifiko udhëtimin tënd nëpër Shqipëri."
-
+        search: "Kërkoni një destinacion...",
+        searchButton: "KËRKO",
+        reset: "RIVENDOS PAMJEN",
+        heading: "Eksploroni Vendet",
+        database: "BAZA E DESTINACIONEVE",
+        legend: "Destinacione kryesore",
+        status: "HARTA AKTIVE",
+        region: "RAJONI",
+        explore: "ZBULONI DESTINACIONIN",
+        noResults: "Nuk u gjet asnjë destinacion.",
+        mapError: "HARTA NUK MUND TË NGARKOHET"
     }
-
 };
 
-
 /* =========================================
-   2. CHANGE WEBSITE LANGUAGE
+   MAP STATUS
 ========================================= */
 
-function changeLanguage(language) {
+function updateMapStatus(message) {
+    const status = document.getElementById("mapStatus");
 
-    if (!translations[language]) {
-        language = "en";
+    if (status) {
+        status.textContent = message;
+    }
+}
+
+/* =========================================
+   CUSTOM MARKER
+========================================= */
+
+function createDestinationMarker(destination) {
+    const markerElement = document.createElement("button");
+
+    markerElement.className = "custom-map-marker";
+    markerElement.type = "button";
+    markerElement.setAttribute(
+        "aria-label",
+        destination.name
+    );
+
+    markerElement.innerHTML = `
+        <span class="marker-pulse"></span>
+        <span class="marker-core"></span>
+    `;
+
+    const marker = new maplibregl.Marker({
+        element: markerElement,
+        anchor: "center"
+    })
+        .setLngLat(destination.coordinates)
+        .addTo(albaniaMap);
+
+    markerElement.addEventListener("click", () => {
+        selectDestination(destination);
+    });
+
+    return marker;
+}
+
+/* =========================================
+   DESTINATION POPUP
+========================================= */
+
+function showDestinationPopup(destination) {
+    const content = document.createElement("div");
+    content.className = "destination-popup-content";
+
+    const title = document.createElement("h3");
+    title.textContent = destination.name;
+
+    const region = document.createElement("p");
+    region.textContent =
+        translations[currentLanguage].region +
+        ": " + destination.region;
+
+    const link = document.createElement("a");
+    link.href = "destination.html?place=" + destination.slug;
+    link.textContent =
+        translations[currentLanguage].explore;
+
+    content.appendChild(title);
+    content.appendChild(region);
+    content.appendChild(link);
+
+    new maplibregl.Popup({
+        closeButton: true,
+        closeOnClick: false,
+        offset: 22,
+        className: "albania-map-popup"
+    })
+        .setLngLat(destination.coordinates)
+        .setDOMContent(content)
+        .addTo(albaniaMap);
+}
+
+/* =========================================
+   SELECT DESTINATION
+========================================= */
+
+function selectDestination(destination) {
+    selectedDestination = destination;
+
+    albaniaMap.flyTo({
+        center: destination.coordinates,
+        zoom: 11,
+        speed: 0.8,
+        curve: 1.4,
+        essential: true
+    });
+
+    document.querySelectorAll(".destination-item")
+        .forEach(button => {
+            button.classList.toggle(
+                "active",
+                button.dataset.slug === destination.slug
+            );
+        });
+
+    showDestinationPopup(destination);
+}
+
+/* =========================================
+   DESTINATION LIST
+========================================= */
+
+function createDestinationList(filter = "") {
+    const container =
+        document.getElementById("destinationList");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    const searchTerm = filter.toLowerCase();
+
+    const filteredDestinations = destinations.filter(
+        destination =>
+            destination.name.toLowerCase().includes(searchTerm) ||
+            destination.region.toLowerCase().includes(searchTerm)
+    );
+
+    if (filteredDestinations.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.textContent =
+            translations[currentLanguage].noResults;
+
+        container.appendChild(emptyMessage);
+        return;
     }
 
-    document.documentElement.lang = language;
+    filteredDestinations.forEach(destination => {
+        const button = document.createElement("button");
 
-    const elements = document.querySelectorAll("[data-i18n]");
+        button.type = "button";
+        button.className = "destination-item";
+        button.textContent = destination.name;
+        button.dataset.slug = destination.slug;
 
-    elements.forEach(element => {
-
-        const key = element.getAttribute("data-i18n");
-
-        if (translations[language][key]) {
-
-            element.textContent = translations[language][key];
-
+        if (
+            selectedDestination &&
+            selectedDestination.slug === destination.slug
+        ) {
+            button.classList.add("active");
         }
 
+        button.addEventListener("click", () => {
+            selectDestination(destination);
+        });
+
+        container.appendChild(button);
+    });
+}
+
+/* =========================================
+   SEARCH
+========================================= */
+
+function initializeSearch() {
+    const input =
+        document.getElementById("destinationSearch");
+
+    const button =
+        document.getElementById("searchButton");
+
+    if (!input || !button) return;
+
+    function searchDestination() {
+        const query = input.value.trim().toLowerCase();
+
+        createDestinationList(query);
+
+        const match = destinations.find(destination =>
+            destination.name.toLowerCase() === query ||
+            destination.slug.toLowerCase() === query
+        );
+
+        if (match) {
+            selectDestination(match);
+        }
+    }
+
+    button.addEventListener("click", searchDestination);
+
+    input.addEventListener("keydown", event => {
+        if (event.key === "Enter") {
+            searchDestination();
+        }
     });
 
+    input.addEventListener("input", () => {
+        createDestinationList(input.value.trim());
+    });
+}
 
-    // Update page title
+/* =========================================
+   RESET MAP
+========================================= */
 
-    if (language === "sq") {
+function initializeResetButton() {
+    const button =
+        document.getElementById("resetMapButton");
 
-        document.title =
-            "Albania Explorer | Zbulo Vendin e Shqiponjave";
+    if (!button) return;
 
-    } else {
+    button.addEventListener("click", () => {
+        selectedDestination = null;
 
-        document.title =
-            "Albania Explorer | Discover the Land of Eagles";
+        albaniaMap.flyTo({
+            center: albaniaCenter,
+            zoom: 7,
+            speed: 0.8,
+            essential: true
+        });
 
+        document.querySelectorAll(".destination-item")
+            .forEach(item => item.classList.remove("active"));
+
+        const input =
+            document.getElementById("destinationSearch");
+
+        if (input) input.value = "";
+
+        createDestinationList();
+    });
+}
+
+/* =========================================
+   MAP COORDINATES
+========================================= */
+
+function initializeCoordinates() {
+    const coordinateDisplay =
+        document.getElementById("mapCoordinates");
+
+    if (!coordinateDisplay) return;
+
+    function updateCoordinates() {
+        const center = albaniaMap.getCenter();
+
+        coordinateDisplay.textContent =
+            Math.abs(center.lat).toFixed(2) + "° N / " +
+            Math.abs(center.lng).toFixed(2) + "° E";
     }
 
+    albaniaMap.on("move", updateCoordinates);
+    updateCoordinates();
+}
 
-    // Update meta description
+/* =========================================
+   LANGUAGE
+========================================= */
 
-    const description = document.querySelector(
-        'meta[name="description"]'
-    );
+function initializeMapLanguage() {
+    const switcher =
+        document.getElementById("languageSwitcher");
 
-    if (description) {
+    if (!switcher) return;
 
-        description.content = language === "sq"
+    switcher.value = currentLanguage;
 
-            ? "Zbulo Shqipërinë. Eksploro qytetet, plazhet, malet, historinë dhe kulturën me Albania Explorer."
+    switcher.addEventListener("change", function () {
+        currentLanguage = this.value;
 
-            : "Discover Albania. Explore its cities, beaches, mountains, history and culture with Albania Explorer.";
+        localStorage.setItem(
+            "albaniaLanguage",
+            currentLanguage
+        );
 
+        const text = translations[currentLanguage];
+
+        document.querySelector(".map-search input").placeholder =
+            text.search;
+
+        document.getElementById("searchButton").textContent =
+            text.searchButton;
+
+        document.getElementById("resetMapButton").textContent =
+            text.reset;
+
+        document.querySelector(".sidebar-heading h2").textContent =
+            text.heading;
+
+        document.querySelector(".sidebar-heading span").textContent =
+            text.database;
+
+        document.querySelector(".map-legend span:last-child").textContent =
+            text.legend;
+
+        createDestinationList(
+            document.getElementById("destinationSearch").value
+        );
+
+        if (selectedDestination) {
+            showDestinationPopup(selectedDestination);
+        }
+
+        updateMapStatus(text.status);
+    });
+}
+
+/* =========================================
+   INITIALIZE MAP
+========================================= */
+
+function initializeMap() {
+    const mapElement =
+        document.getElementById("albaniaMap");
+
+    if (!mapElement || typeof maplibregl === "undefined") {
+        updateMapStatus(
+            translations[currentLanguage].mapError
+        );
+
+        console.error("MapLibre or map container not found.");
+        return;
     }
-
-
-    // Remember selected language
 
     try {
+        albaniaMap = new maplibregl.Map({
+            container: "albaniaMap",
 
-        localStorage.setItem("albania-language", language);
+            style: {
+                version: 8,
+
+                sources: {
+                    "carto-dark": {
+                        type: "raster",
+                        tiles: [
+                            "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+                            "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+                            "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+                            "https://d.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
+                        ],
+                        tileSize: 256,
+                        attribution:
+                            '&copy; OpenStreetMap contributors &copy; CARTO'
+                    }
+                },
+
+                layers: [
+                    {
+                        id: "carto-dark-layer",
+                        type: "raster",
+                        source: "carto-dark",
+                        minzoom: 0,
+                        maxzoom: 19
+                    }
+                ]
+            },
+
+            center: albaniaCenter,
+            zoom: 7,
+            minZoom: 5,
+            maxZoom: 17,
+
+            maxBounds: [
+                [18.0, 39.0],
+                [22.0, 43.0]
+            ],
+
+            attributionControl: true
+        });
+
+        albaniaMap.addControl(
+            new maplibregl.NavigationControl({
+                showCompass: true,
+                showZoom: true
+            }),
+            "top-right"
+        );
+
+        albaniaMap.on("load", () => {
+            destinations.forEach(destination => {
+                mapMarkers.push(
+                    createDestinationMarker(destination)
+                );
+            });
+
+            createDestinationList();
+            initializeSearch();
+            initializeResetButton();
+            initializeCoordinates();
+
+            updateMapStatus(
+                translations[currentLanguage].status
+            );
+        });
+
+        albaniaMap.on("error", event => {
+            console.error("MapLibre error:", event.error);
+        });
 
     } catch (error) {
+        console.error("Map initialization error:", error);
 
-        console.warn("Language preference could not be saved.");
-
+        updateMapStatus(
+            translations[currentLanguage].mapError
+        );
     }
-
-
-    // Update language selector
-
-    const selector = document.getElementById("languageSwitcher");
-
-    if (selector) {
-
-        selector.value = language;
-
-    }
-
 }
 
-
 /* =========================================
-   3. INITIALIZE LANGUAGE
-========================================= */
-
-function initializeLanguage() {
-
-    let savedLanguage = "en";
-
-    try {
-
-        savedLanguage =
-            localStorage.getItem("albania-language") || "en";
-
-    } catch (error) {
-
-        console.warn("Language preference unavailable.");
-
-    }
-
-    changeLanguage(savedLanguage);
-
-
-    const selector = document.getElementById("languageSwitcher");
-
-    if (selector) {
-
-        selector.addEventListener("change", event => {
-
-            changeLanguage(event.target.value);
-
-        });
-
-    }
-
-}
-
-
-/* =========================================
-   4. NAVIGATION
-========================================= */
-
-function initializeNavigation() {
-
-    const navigationLinks = document.querySelectorAll(
-        '.navigation a[href^="#"]'
-    );
-
-    navigationLinks.forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            const targetId = link.getAttribute("href");
-
-            const target = document.querySelector(targetId);
-
-            if (target) {
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-
-                    behavior: "smooth",
-
-                    block: "start"
-
-                });
-
-            }
-
-        });
-
-    });
-
-}
-
-
-/* =========================================
-   5. EXPLORE BUTTON
-========================================= */
-
-function initializeExploreButtons() {
-
-    const buttons = document.querySelectorAll(
-        '.explore-button[href^="#"]'
-    );
-
-    buttons.forEach(button => {
-
-        button.addEventListener("click", event => {
-
-            const targetId = button.getAttribute("href");
-
-            const target = document.querySelector(targetId);
-
-            if (target) {
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-
-                    behavior: "smooth",
-
-                    block: "start"
-
-                });
-
-            }
-
-        });
-
-    });
-
-}
-
-
-/* =========================================
-   6. APPLICATION INITIALIZATION
+   START
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    initializeLanguage();
-
-    initializeNavigation();
-
-    initializeExploreButtons();
-
-    console.log(
-        "ALBANIA EXPLORER successfully initialized."
-    );
-
+    initializeMap();
+    initializeMapLanguage();
 });
