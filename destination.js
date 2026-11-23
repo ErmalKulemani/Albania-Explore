@@ -1,4 +1,3 @@
-
 /* =========================================
    ALBANIA EXPLORER
    DESTINATION SYSTEM
@@ -7,6 +6,7 @@
 const destinationData = {
 
     tirana: {
+        image: "assets/images/destinations/Tirana Panorama.jpg",
         name: { en: "Tirana", sq: "Tirana" },
         subtitle: {
             en: "Discover the vibrant capital of Albania.",
@@ -45,6 +45,7 @@ const destinationData = {
     },
 
     shkoder: {
+        image: "assets/images/destinations/Shkoder Panorama.jpg",
         name: { en: "Shkodër", sq: "Shkodër" },
         subtitle: {
             en: "Explore one of Albania's oldest historic cities.",
@@ -83,6 +84,7 @@ const destinationData = {
     },
 
     durres: {
+        image: "assets/images/destinations/Durres Panorama.jpg",
         name: { en: "Durrës", sq: "Durrës" },
         subtitle: {
             en: "Discover the history and beaches of the Adriatic coast.",
@@ -121,6 +123,7 @@ const destinationData = {
     },
 
     berat: {
+        image: "assets/images/destinations/Berat Panorama.jpg",
         name: { en: "Berat", sq: "Berat" },
         subtitle: {
             en: "Discover the city of a thousand windows.",
@@ -159,6 +162,7 @@ const destinationData = {
     },
 
     gjirokaster: {
+        image: "assets/images/destinations/Gjirokaster Panorama.jpg",
         name: { en: "Gjirokastër", sq: "Gjirokastër" },
         subtitle: {
             en: "Explore the stone city of southern Albania.",
@@ -197,6 +201,7 @@ const destinationData = {
     },
 
     vlore: {
+        image: "assets/images/destinations/Vlore Panorama.jpg",
         name: { en: "Vlorë", sq: "Vlorë" },
         subtitle: {
             en: "Discover the meeting point of the Adriatic and Ionian seas.",
@@ -235,6 +240,7 @@ const destinationData = {
     },
 
     sarande: {
+        image: "assets/images/destinations/Sarande Panorama.jpg",
         name: { en: "Sarandë", sq: "Sarandë" },
         subtitle: {
             en: "Discover the beauty of the Albanian Riviera.",
@@ -273,6 +279,7 @@ const destinationData = {
     },
 
     ksamil: {
+        image: "assets/images/destinations/Ksamil Panorama.jpg",
         name: { en: "Ksamil", sq: "Ksamil" },
         subtitle: {
             en: "Explore the turquoise waters of the Albanian Riviera.",
@@ -311,6 +318,7 @@ const destinationData = {
     },
 
     kruje: {
+        image: "assets/images/destinations/Kruje Panorama.jpg",
         name: { en: "Krujë", sq: "Krujë" },
         subtitle: {
             en: "Discover the historic home of Albania's national hero.",
@@ -349,6 +357,7 @@ const destinationData = {
     },
 
     theth: {
+        image: "assets/images/destinations/Theth Panorama.jpg",
         name: { en: "Theth", sq: "Theth" },
         subtitle: {
             en: "Experience the wild beauty of the Albanian Alps.",
@@ -387,6 +396,7 @@ const destinationData = {
     },
 
     valbone: {
+        image: "assets/images/destinations/Valbone Panorama.jpg",
         name: { en: "Valbonë", sq: "Valbonë" },
         subtitle: {
             en: "Discover the spectacular Valbona Valley.",
@@ -425,6 +435,7 @@ const destinationData = {
     },
 
     butrint: {
+        image: "assets/images/destinations/Butrint Panorama.jpg",
         name: { en: "Butrint", sq: "Butrint" },
         subtitle: {
             en: "Travel through thousands of years of history.",
@@ -544,6 +555,16 @@ function renderDestination() {
 
     const lang = destinationLanguage;
     const ui = destinationInterface[lang];
+
+    // Set the panoramic image belonging to the selected destination.
+    const hero = document.querySelector(".destination-hero");
+    if (hero && destination.image) {
+        hero.style.backgroundImage = `
+            linear-gradient(90deg, rgba(4, 8, 16, 0.95), rgba(4, 8, 16, 0.35)),
+            linear-gradient(0deg, #070b13 0%, transparent 45%),
+            url("${destination.image}")
+        `;
+    }
 
     document.documentElement.lang = lang;
 
