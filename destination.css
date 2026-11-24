@@ -1,4 +1,4 @@
-
+```css
 /* =========================================
    ALBANIA EXPLORER
    DESTINATION PAGES
@@ -45,10 +45,10 @@
 
 .destination-hero {
     position: relative;
-    min-height: 650px;
+    min-height: 600px;
     display: flex;
     align-items: center;
-    padding: 100px 9%;
+    padding: 75px 8%;
     background:
         linear-gradient(90deg, rgba(4, 8, 16, 0.95), rgba(4, 8, 16, 0.35)),
         linear-gradient(0deg, #070b13 0%, transparent 45%),
@@ -91,14 +91,14 @@
     font-family: "Orbitron", sans-serif;
     font-size: 12px;
     letter-spacing: 5px;
-    margin-bottom: 22px;
+    margin-bottom: 14px;
 }
 
 .destination-hero h1 {
     font-family: "Orbitron", sans-serif;
     font-size: clamp(38px, 7vw, 82px);
     line-height: 1.12;
-    margin: 0 0 22px;
+    margin: 0 0 16px;
     text-transform: uppercase;
     text-shadow: 0 0 35px rgba(0, 0, 0, 0.5);
 }
@@ -106,14 +106,14 @@
 .destination-hero-content > p {
     max-width: 650px;
     color: #d0d6e2;
-    font-size: 19px;
-    line-height: 1.7;
-    margin-bottom: 35px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 0 24px;
 }
 
 .destination-back-button {
     display: inline-block;
-    padding: 14px 25px;
+    padding: 12px 23px;
     color: #ffffff;
     background: rgba(230, 57, 70, 0.12);
     border: 1px solid #e63946;
@@ -136,11 +136,11 @@
 .destination-overview,
 .destination-attractions,
 .destination-gallery {
-    padding: 90px 9%;
+    padding: 55px 8%;
 }
 
 .destination-section-heading {
-    margin-bottom: 35px;
+    margin-bottom: 24px;
 }
 
 .destination-section-heading > span {
@@ -152,8 +152,8 @@
 
 .destination-section-heading h2 {
     font-family: "Orbitron", sans-serif;
-    font-size: clamp(27px, 4vw, 40px);
-    margin-top: 12px;
+    font-size: clamp(25px, 4vw, 38px);
+    margin-top: 8px;
     margin-bottom: 0;
 }
 
@@ -170,21 +170,22 @@
 }
 
 #destinationDescription {
-    max-width: 950px;
+    max-width: 1000px;
     color: #aeb8c9;
-    font-size: 17px;
-    line-height: 1.9;
+    font-size: 16px;
+    line-height: 1.75;
+    margin: 0;
 }
 
 .destination-facts {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-    margin-top: 45px;
+    gap: 14px;
+    margin-top: 25px;
 }
 
 .destination-fact {
-    padding: 28px;
+    padding: 21px;
     background: linear-gradient(
         145deg,
         rgba(20, 31, 49, 0.95),
@@ -197,9 +198,9 @@
 }
 
 .destination-fact:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     border-color: rgba(230, 57, 70, 0.6);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .destination-fact span {
@@ -208,12 +209,12 @@
     font-family: "Orbitron", sans-serif;
     font-size: 10px;
     letter-spacing: 2px;
-    margin-bottom: 13px;
+    margin-bottom: 9px;
 }
 
 .destination-fact strong {
     color: #ffffff;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 /* ATTRACTIONS */
@@ -225,7 +226,7 @@
 .attractions-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px;
+    gap: 16px;
 }
 
 .attraction-card {
@@ -233,13 +234,13 @@
     background: #111b2b;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 9px;
-    transition: 0.35s ease;
+    transition: 0.3s ease;
 }
 
 .attraction-card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-5px);
     border-color: rgba(230, 57, 70, 0.55);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 .attraction-card img {
@@ -247,28 +248,30 @@
     height: 220px;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease;
+    filter: none;
+    transition: transform 0.4s ease;
 }
 
 .attraction-card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.035);
 }
 
 .attraction-card-content {
-    padding: 22px;
+    padding: 17px;
 }
 
 .attraction-card h3 {
     color: #ffffff;
     font-family: "Orbitron", sans-serif;
-    font-size: 17px;
-    margin: 0 0 12px;
+    font-size: 16px;
+    margin: 0 0 8px;
 }
 
 .attraction-card p {
     color: #aeb8c9;
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* GALLERY */
@@ -280,29 +283,30 @@
 .destination-gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 15px;
+    gap: 12px;
 }
 
 .destination-gallery-grid img {
     display: block;
     width: 100%;
-    height: 260px;
+    height: 250px;
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: 0.35s ease;
+    filter: none;
+    transition: 0.3s ease;
 }
 
 .destination-gallery-grid img:hover {
-    transform: scale(1.025);
+    transform: scale(1.02);
     border-color: #e63946;
-    box-shadow: 0 0 25px rgba(230, 57, 70, 0.2);
+    box-shadow: 0 0 22px rgba(230, 57, 70, 0.2);
 }
 
 /* EXPLORE MORE */
 
 .destination-explore-more {
-    padding: 90px 20px;
+    padding: 55px 20px;
     text-align: center;
     background:
         radial-gradient(
@@ -316,18 +320,18 @@
 .destination-explore-more h2 {
     font-family: "Orbitron", sans-serif;
     font-size: clamp(25px, 4vw, 38px);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .destination-explore-more p {
     color: #aeb8c9;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 /* FOOTER */
 
 .destination-page .site-footer {
-    padding: 25px;
+    padding: 20px;
     text-align: center;
     background: #050810;
     border-top: 1px solid rgba(255, 255, 255, 0.07);
@@ -339,14 +343,14 @@
 
 @media (max-width: 900px) {
     .destination-hero {
-        min-height: 560px;
-        padding: 80px 6%;
+        min-height: 540px;
+        padding: 65px 6%;
     }
 
     .destination-overview,
     .destination-attractions,
     .destination-gallery {
-        padding: 65px 6%;
+        padding: 45px 6%;
     }
 
     .attractions-grid,
@@ -357,8 +361,8 @@
 
 @media (max-width: 600px) {
     .destination-hero {
-        min-height: 500px;
-        padding: 70px 6%;
+        min-height: 480px;
+        padding: 55px 6%;
     }
 
     .destination-hero-content > p {
@@ -378,6 +382,11 @@
     .destination-overview,
     .destination-attractions,
     .destination-gallery {
-        padding: 55px 6%;
+        padding: 40px 6%;
+    }
+
+    .destination-explore-more {
+        padding: 40px 18px;
     }
 }
+```
